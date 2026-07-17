@@ -2,21 +2,88 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Contact | IKAI Energy Consulting" description="Contact IKAI Energy Consulting for power systems, grid connection and renewable energy engineering support.">
-<section class="page-hero"><div class="container"><span class="eyebrow gold">Contact</span><h1>Let’s discuss your project.</h1><p class="lead">Tell us about the technical challenge, project stage and support you need. We will respond with a clear next step.</p></div></section>
+<section class="page-hero"><div class="container"><span class="eyebrow gold">Contact</span><h1>Let’s discuss your project.</h1><p class="lead">Contact IKAI for project enquiries, partnerships or specialist technical support.</p></div></section>
 <section class="section"><div class="container">
-<div class="contact-grid"><div class="contact-details reveal"><span class="eyebrow">IKAI Energy Consulting</span><h2>Start a conversation.</h2><p class="lead">For project enquiries, partnerships or specialist technical support, contact IKAI directly or use the form.</p><div class="contact-list"><a href="mailto:dylan.nguyen@ikaienergy.com.au"><small>Email</small><b>dylan.nguyen@ikaienergy.com.au</b></a><a href="tel:+61468339333"><small>Phone</small><b>+61 468 339 333</b></a><div><small>Location</small><b>Melbourne, Australia</b></div></div></div>
-<form class="contact-form card reveal" action="https://formsubmit.co/dylan.nguyen@ikaienergy.com.au" method="POST">
+<div class="contact-grid"><div class="contact-details reveal"><span class="eyebrow">IKAI Energy Consulting</span><h2>Get in touch.</h2><p class="lead">Contact IKAI directly or send your details using the form.</p><div class="contact-list"><a href="mailto:dylan.nguyen@ikaienergy.com.au"><small>Email</small><b>dylan.nguyen@ikaienergy.com.au</b></a><a href="tel:+61468339333"><small>Phone</small><b>+61 468 339 333</b></a><div><small>Location</small><b>Melbourne, Australia</b></div></div></div>
+<div class="form-column reveal">
+<div id="success-message" class="success-message" role="status" tabindex="-1" hidden>
+<div class="success-icon" aria-hidden="true">✓</div>
+<div><strong>Your enquiry has been sent successfully.</strong><p>Thank you for contacting IKAI. We will get back to you shortly.</p></div>
+</div>
+<form id="contact-form" class="contact-form card" action="https://formsubmit.co/dylan.nguyen@ikaienergy.com.au" method="POST" novalidate>
 <input type="hidden" name="_subject" value="New enquiry from IKAI Energy website"/>
 <input type="hidden" name="_template" value="table"/>
-<input type="hidden" name="_next" value="https://ikaienergy.com.au/thank-you"/>
-<input type="hidden" name="_autoresponse" value="Thank you for contacting IKAI Energy Consulting. We have received your enquiry and will review it shortly. We will contact you as soon as possible. Regards, IKAI Energy Consulting."/>
+<input type="hidden" name="_next" value="https://ikaienergy.com.au/contact?sent=1"/>
+<input type="hidden" name="_autoresponse" value="Thank you for contacting IKAI Energy Consulting. We have received your enquiry and will contact you as soon as possible. Regards, IKAI Energy Consulting."/>
 <input type="hidden" name="_captcha" value="true"/>
-<label>Full name <span class="required">Required</span><input name="name" required autocomplete="name" placeholder="Your name"/></label>
-<label>Email address <span class="required">Required</span><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"/></label>
-<label>Contact phone number <span class="optional">Optional</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="e.g. +61 4xx xxx xxx"/><small class="field-help">Provide a number only when you would like us to call you.</small></label>
+<label>Full name<input name="name" required autocomplete="name" placeholder="Your name"/></label>
+<label>Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com"/></label>
+<label>Contact phone number<input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="e.g. +61 4xx xxx xxx"/></label>
+<p id="contact-error" class="contact-error" role="alert" hidden>Please leave your email address or phone number so we can get back to you.</p>
 <label>Company <span class="optional">Optional</span><input name="company" autocomplete="organization" placeholder="Company or organisation"/></label>
-<label>How can we help? <span class="required">Required</span><textarea name="message" rows="6" required placeholder="Tell us briefly about your project or enquiry"></textarea></label>
-<button class="btn btn-primary" type="submit">Send enquiry ↗</button><p class="form-note">After submitting, you will be taken to a confirmation page. A confirmation email will also be sent to the email address above.</p>
-</form></div></div></section>
+<label>How can we help? <span class="optional">Optional</span><textarea name="message" rows="6" placeholder="Tell us briefly about your project or enquiry"></textarea></label>
+<button class="btn btn-primary" type="submit">Send</button>
+</form>
+</div></div></div></section>
+<script>
+  const form = document.querySelector('#contact-form');
+  const email = form?.querySelector('input[name="email"]');
+  const phone = form?.querySelector('input[name="phone"]');
+  const name = form?.querySelector('input[name="name"]');
+  const error = document.querySelector('#contact-error');
+  const success = document.querySelector('#success-message');
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('sent') === '1' && success) {
+    success.hidden = false;
+    success.focus();
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  form?.addEventListener('submit', (event) => {
+    error.hidden = true;
+    email?.removeAttribute('aria-invalid');
+    phone?.removeAttribute('aria-invalid');
+
+    if (!name?.value.trim()) {
+      event.preventDefault();
+      name?.focus();
+      name?.reportValidity();
+      return;
+    }
+
+    if (email?.value && !email.validity.valid) {
+      event.preventDefault();
+      email.focus();
+      email.reportValidity();
+      return;
+    }
+
+    if (!email?.value.trim() && !phone?.value.trim()) {
+      event.preventDefault();
+      error.hidden = false;
+      email?.setAttribute('aria-invalid', 'true');
+      phone?.setAttribute('aria-invalid', 'true');
+      error.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const button = form.querySelector('button[type="submit"]');
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Sending…';
+    }
+  });
+
+  [email, phone].forEach((field) => field?.addEventListener('input', () => {
+    if (email?.value.trim() || phone?.value.trim()) {
+      error.hidden = true;
+      email?.removeAttribute('aria-invalid');
+      phone?.removeAttribute('aria-invalid');
+    }
+  }));
+</script>
 </BaseLayout>
-<style>.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}.contact-details h2{margin:20px 0}.contact-list{margin-top:45px}.contact-list a,.contact-list>div{display:block;padding:20px 0;border-top:1px solid var(--line)}.contact-list small{display:block;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:750}.contact-list b{display:block;margin-top:5px}.contact-form{padding:38px}.contact-form label{display:block;font-weight:750;margin-bottom:22px}.optional,.required{font-size:.72rem;font-weight:700;margin-left:6px;text-transform:uppercase;letter-spacing:.06em}.optional{color:var(--muted)}.required{color:var(--blue)}.contact-form input,.contact-form textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:8px;background:#fbfcfd;font:inherit}.contact-form input:focus,.contact-form textarea:focus{outline:2px solid rgba(11,99,206,.25);border-color:var(--blue)}.field-help{display:block;margin-top:7px;color:var(--muted);font-size:.78rem;font-weight:500}.form-note{font-size:.8rem;color:var(--muted);margin-top:16px}@media(max-width:800px){.contact-grid{grid-template-columns:1fr;gap:45px}.contact-form{padding:25px}}</style>
+<style>
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}.contact-details h2{margin:20px 0}.contact-list{margin-top:45px}.contact-list a,.contact-list>div{display:block;padding:20px 0;border-top:1px solid var(--line)}.contact-list small{display:block;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:750}.contact-list b{display:block;margin-top:5px}.form-column{min-width:0}.contact-form{padding:38px}.contact-form label{display:block;font-weight:750;margin-bottom:22px}.optional{font-size:.72rem;font-weight:700;margin-left:6px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.contact-form input,.contact-form textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:8px;background:#fbfcfd;font:inherit}.contact-form input:focus,.contact-form textarea:focus{outline:2px solid rgba(11,99,206,.25);border-color:var(--blue)}.contact-form input[aria-invalid="true"]{border-color:#b42318;background:#fff8f7}.contact-error{margin:-8px 0 22px;padding:12px 14px;border-radius:10px;background:#fff1f0;color:#b42318;font-size:.88rem;font-weight:700}.success-message{display:flex;gap:16px;align-items:flex-start;margin-bottom:22px;padding:20px 22px;border:1px solid #a6d5ad;border-radius:16px;background:#f0faf2;color:#174d24;box-shadow:0 10px 28px rgba(23,77,36,.08)}.success-message[hidden]{display:none}.success-message:focus{outline:2px solid rgba(46,125,50,.25);outline-offset:3px}.success-message strong{display:block;font-size:1.02rem}.success-message p{margin:5px 0 0;color:#376b42}.success-icon{width:34px;height:34px;flex:0 0 34px;border-radius:50%;display:grid;place-items:center;background:#2e7d32;color:#fff;font-weight:900}.contact-form button:disabled{opacity:.7;cursor:wait}@media(max-width:800px){.contact-grid{grid-template-columns:1fr;gap:45px}.contact-form{padding:25px}}
+</style>
