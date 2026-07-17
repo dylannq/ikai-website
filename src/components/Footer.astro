@@ -1,0 +1,37 @@
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <img class="footer-logo" src="/images/ikai-logo-dark.png" alt="IKAI Energy Consulting" />
+      <p class="footer-copy">Independent power systems, grid connection and engineering advisory supporting Australia's energy transition.</p>
+    </div>
+    <div>
+      <h3>Explore</h3>
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/expertise">Expertise</a>
+      <a href="/insights">Insights</a>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <a href="mailto:dylan.nguyen@ikaienergy.com.au">dylan.nguyen@ikaienergy.com.au</a>
+      <a href="tel:+61468339333">+61 468 339 333</a>
+      <p>Melbourne, Australia</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {new Date().getFullYear()} IKAI Pty Ltd. All rights reserved.</span>
+    <span>Smart Energy. Sustainable Future.</span>
+  </div>
+</footer>
+
+<style>
+.footer { background:#03152d; color:white; padding:72px 0 24px; }
+.footer-grid { display:grid; grid-template-columns:1.7fr .8fr 1fr; gap:60px; }
+.footer-logo { width:420px; max-width:100%; margin-bottom:22px; }
+.footer-copy { color:rgba(255,255,255,.68); max-width:540px; }
+.footer h3 { color:#efb31c; font-size:1rem; text-transform:uppercase; letter-spacing:.1em; }
+.footer a, .footer p { display:block; color:rgba(255,255,255,.72); margin:10px 0; overflow-wrap:anywhere; }
+.footer a:hover { color:white; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,.14); margin-top:44px; padding-top:22px; display:flex; justify-content:space-between; gap:20px; color:rgba(255,255,255,.48); font-size:.88rem; }
+@media(max-width:800px){ .footer-grid{grid-template-columns:1fr;gap:30px}.footer-bottom{flex-direction:column}.footer-logo{width:360px} }
+</style>

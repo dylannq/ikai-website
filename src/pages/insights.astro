@@ -1,0 +1,17 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+const posts = [
+ {href:'/insights/grid-connection-risks', tag:'Grid Connection', title:'Five grid connection risks to address early', excerpt:'A practical overview of the technical and process risks that can affect cost, schedule and project certainty.'},
+ {href:'/insights/gps-process', tag:'GPS', title:'Understanding the GPS process in Australia', excerpt:'What project teams should know about performance standards, modelling, evidence and stakeholder engagement.'},
+ {href:'/insights/pscad-vs-psse', tag:'Power Systems', title:'PSCAD and PSS®E: when each model matters', excerpt:'How RMS and EMT tools support different questions across connection studies and project delivery.'}
+];
+---
+<MainLayout title="Insights | IKAI Energy Consulting" description="Practical insights on grid connection, power system studies and renewable energy engineering.">
+  <section class="page-hero"><div class="container"><span class="eyebrow light">Insights</span><h1>Practical thinking for complex energy projects.</h1><p class="lead">Technical perspectives on grid connection, power systems and project delivery.</p></div></section>
+  <section class="section">
+    <div class="container grid grid-3">
+      {posts.map(p => <article class="card post"><span class="tag">{p.tag}</span><h3>{p.title}</h3><p class="muted">{p.excerpt}</p><a href={p.href}>Read insight →</a></article>)}
+    </div>
+  </section>
+</MainLayout>
+<style>.post{display:flex;flex-direction:column;min-height:300px}.post h3{margin-top:24px}.post a{margin-top:auto;font-weight:800;color:var(--navy-700)}</style>

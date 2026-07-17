@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ikaienergy.com.au/sitemap-index.xml

@@ -1,0 +1,27 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+const areas = [
+ ['Wind Energy','Grid integration, plant performance, controls and connection support for utility-scale wind projects.'],
+ ['Solar Energy','Connection and electrical engineering support for utility-scale solar generation.'],
+ ['Battery Energy Storage','RMS and EMT performance, control interactions, grid-forming considerations and connection strategy.'],
+ ['Hybrid Projects','Integrated assessment of generation, storage, controls and shared network infrastructure.'],
+ ['Transmission & Substations','Network interface, substation, transmission and balance-of-plant engineering.'],
+ ['Large Loads','Connection strategy and power system assessment for data centres, industry and other major loads.'],
+ ['Power Systems','Load flow, stability, fault level, dynamic performance and power quality analysis.'],
+ ['Technical Leadership','Engineering management, stakeholder coordination and independent technical assurance.']
+];
+---
+<MainLayout title="Expertise | IKAI Energy Consulting" description="IKAI expertise across wind, solar, BESS, hybrid projects, transmission, substations and power systems.">
+  <section class="page-hero"><div class="container"><span class="eyebrow light">Expertise</span><h1>Deep capability across the energy system.</h1><p class="lead">Specialist technical knowledge supported by practical development, connection and delivery experience.</p></div></section>
+  <section class="section">
+    <div class="container grid grid-2">
+      {areas.map(([title,text], i) => (
+        <article class="card expertise-card"><div class="icon-tile">{String(i+1).padStart(2,'0')}</div><h3>{title}</h3><p class="muted">{text}</p></article>
+      ))}
+    </div>
+  </section>
+  <section class="section-sm"><div class="container"><div class="toolbox"><span class="eyebrow light">Tools & Methods</span><h2>PSS®E · PSCAD · PowerFactory · RMS · EMT · GPS · Harmonics · Protection</h2></div></div></section>
+</MainLayout>
+<style>
+.expertise-card{min-height:250px}.toolbox{background:#06203f;color:white;border-radius:26px;padding:52px}.toolbox h2{margin:22px 0 0;color:#fff;line-height:1.35}
+</style>

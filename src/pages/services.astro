@@ -1,0 +1,30 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+const services = [
+  { n:'01', title:'Grid Connection', text:'End-to-end technical support from connection strategy through commissioning and compliance.', items:['Connection strategy and risk reviews','Generator Performance Standards','R0, R1 and R2 study coordination','AEMO and NSP engagement','Model acceptance and technical queries'] },
+  { n:'02', title:'Power System Studies', text:'RMS and EMT studies to support connection, design and operational decisions.', items:['PSS®E, PSCAD and PowerFactory studies','Load flow, fault level and stability','EMT performance and control interactions','Harmonics and power quality','Model validation and benchmarking'] },
+  { n:'03', title:'Electrical Engineering', text:'Practical engineering design and technical assurance across project delivery.', items:['Electrical balance of plant','Primary and secondary systems','Substations and transmission interfaces','Design basis and specifications','Design review and technical assurance'] },
+  { n:'04', title:"Owner's Engineer", text:'Independent technical representation across development, procurement and construction.', items:['Technical due diligence','Design and tender review','Contractor technical management','Construction support','Commissioning and handover support'] },
+  { n:'05', title:'Strategy & Advisory', text:'Technical and commercial insight for investment and project decisions.', items:['Project risk assessment','Connection pathway options','Technology and concept evaluation','Technical-commercial interface support','Executive and board-level advice'] },
+  { n:'06', title:'Operational Asset Support', text:'Support for compliance, performance and technical risk across operating assets.', items:['Compliance monitoring','Performance issue investigation','Technical risk reviews','Change management support','AEMO and NSP interface'] }
+];
+---
+<MainLayout title="Services | IKAI Energy Consulting" description="Grid connection, power system studies, electrical engineering, owner's engineer and technical advisory services.">
+  <section class="page-hero"><div class="container"><span class="eyebrow light">Services</span><h1>Technical expertise across the project lifecycle.</h1><p class="lead">From early strategy to connection, design, delivery and operations.</p></div></section>
+  <section class="section">
+    <div class="container service-list">
+      {services.map((s) => (
+        <article class="service-row">
+          <div class="service-index">{s.n}</div>
+          <div><h2>{s.title}</h2><p class="lead">{s.text}</p></div>
+          <ul class="list-clean">{s.items.map(i => <li>{i}</li>)}</ul>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="section-sm"><div class="container cta-band"><div><span class="eyebrow light">Need a tailored scope?</span><h2>Let’s define the right technical support for your project.</h2></div><a class="btn btn-primary" href="/contact">Book a Consultation</a></div></section>
+</MainLayout>
+<style>
+.service-row{display:grid;grid-template-columns:70px 1fr 1fr;gap:40px;padding:54px 0;border-bottom:1px solid var(--line)}.service-index{color:var(--gold-500);font-weight:900;letter-spacing:.15em}.service-row h2{font-size:2rem}.service-row .lead{font-size:1.06rem}
+@media(max-width:800px){.service-row{grid-template-columns:1fr;gap:12px;padding:38px 0}}
+</style>

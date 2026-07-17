@@ -1,0 +1,74 @@
+---
+const pathname = Astro.url.pathname;
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/expertise', label: 'Expertise' },
+  { href: '/insights', label: 'Insights' },
+  { href: '/contact', label: 'Contact' }
+];
+---
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="/" aria-label="IKAI Energy Consulting home">
+      <img src="/images/ikai-logo-horizontal.png" alt="IKAI Energy Consulting" />
+    </a>
+
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="main-nav" class="nav">
+      {links.map((link) => (
+        <a class:list={['nav-link', { active: pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href)) }]} href={link.href}>
+          {link.label}
+        </a>
+      ))}
+      <a class="nav-cta" href="/contact">Book a Consultation</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('#main-nav');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('open');
+  });
+</script>
+
+<style>
+.site-header {
+  position: fixed; inset: 0 0 auto;
+  z-index: 50;
+  background: rgba(255,255,255,.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(219,227,234,.9);
+}
+.nav-wrap { min-height: 82px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.brand img { width: 250px; height: 72px; object-fit: contain; object-position: left center; }
+.nav { display:flex; align-items:center; gap:23px; }
+.nav-link { font-weight:700; font-size:.94rem; color:#34475c; position:relative; padding:28px 0; }
+.nav-link::after { content:""; position:absolute; left:0; right:100%; bottom:19px; height:2px; background:#d69a00; transition:.2s; }
+.nav-link:hover::after, .nav-link.active::after { right:0; }
+.nav-link.active { color:#06203f; }
+.nav-cta { background:#06203f; color:white; border-radius:999px; padding:12px 18px; font-weight:800; }
+.menu-toggle { display:none; border:0; background:none; padding:10px; }
+.menu-toggle span { display:block; width:25px; height:2px; background:#06203f; margin:5px; }
+@media (max-width: 980px) {
+  .menu-toggle { display:block; }
+  .nav {
+    display:none; position:absolute; top:82px; left:0; right:0;
+    background:white; padding:20px; border-bottom:1px solid #dbe3ea;
+    flex-direction:column; align-items:stretch; gap:0;
+  }
+  .nav.open { display:flex; }
+  .nav-link { padding:13px 8px; }
+  .nav-link::after { display:none; }
+  .nav-cta { margin-top:10px; text-align:center; }
+  .brand img { width: 215px; }
+}
+</style>
