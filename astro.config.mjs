@@ -4,5 +4,5 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://ikaienergy.com.au',
   integrations: [sitemap()],
-  output: 'static'
+  trailingSlash: 'never'
 });

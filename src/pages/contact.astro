@@ -1,31 +1,12 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<MainLayout title="Contact | IKAI Energy Consulting" description="Contact IKAI Energy Consulting in Melbourne for grid connection, power system studies and engineering advisory.">
-  <section class="page-hero"><div class="container"><span class="eyebrow light">Contact</span><h1>Let’s discuss your project.</h1><p class="lead">Tell us about your technical challenge, project stage and the support you need.</p></div></section>
-  <section class="section">
-    <div class="container contact-grid">
-      <div>
-        <span class="eyebrow">Get in touch</span>
-        <h2>Start a conversation with IKAI.</h2>
-        <div class="contact-detail"><span>Email</span><a href="mailto:dylan.nguyen@ikaienergy.com.au">dylan.nguyen@ikaienergy.com.au</a></div>
-        <div class="contact-detail"><span>Phone</span><a href="tel:+61468339333">+61 468 339 333</a></div>
-        <div class="contact-detail"><span>Location</span><p>Melbourne, Australia</p></div>
-      </div>
-      <form class="contact-form" action="https://formsubmit.co/dylan.nguyen@ikaienergy.com.au" method="POST">
-        <input type="hidden" name="_subject" value="New website enquiry — IKAI Energy Consulting" />
-        <input type="hidden" name="_captcha" value="false" />
-        <label>Name<input required name="name" type="text" /></label>
-        <label>Email<input required name="email" type="email" /></label>
-        <label>Company<input name="company" type="text" /></label>
-        <label>How can we help?<textarea required name="message" rows="6"></textarea></label>
-        <button class="btn btn-primary" type="submit">Send Enquiry</button>
-        <p class="form-note">Your message will be sent directly to IKAI Energy Consulting.</p>
-      </form>
-    </div>
-  </section>
-</MainLayout>
-<style>
-.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px}.contact-detail{padding:20px 0;border-bottom:1px solid var(--line)}.contact-detail span{display:block;color:var(--gold-500);font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.14em}.contact-detail a,.contact-detail p{font-size:1.1rem;font-weight:700;margin:5px 0}.contact-form{background:var(--surface-alt);border:1px solid var(--line);border-radius:24px;padding:36px}.contact-form label{display:block;font-weight:800;margin-bottom:18px}.contact-form input,.contact-form textarea{width:100%;margin-top:7px;border:1px solid #cbd6df;border-radius:10px;padding:13px;background:white}.contact-form input:focus,.contact-form textarea:focus{outline:2px solid rgba(23,103,198,.25);border-color:#1767c6}.form-note{font-size:.82rem;color:var(--muted);margin-top:15px}
-@media(max-width:850px){.contact-grid{grid-template-columns:1fr;gap:45px}}
-</style>
+<BaseLayout title="Contact | IKAI Energy Consulting" description="Contact IKAI Energy Consulting for power systems, grid connection and renewable energy engineering support.">
+<section class="page-hero"><div class="container"><span class="eyebrow gold">Contact</span><h1>Let’s discuss your project.</h1><p class="lead">Tell us about the technical challenge, project stage and support you need. We will respond with a clear next step.</p></div></section>
+<section class="section"><div class="container contact-grid"><div class="contact-details reveal"><span class="eyebrow">IKAI Energy Consulting</span><h2>Start a conversation.</h2><p class="lead">For project enquiries, partnerships or specialist technical support, contact IKAI directly or use the form.</p><div class="contact-list"><a href="mailto:dylan.nguyen@ikaienergy.com.au"><small>Email</small><b>dylan.nguyen@ikaienergy.com.au</b></a><a href="tel:+61468339333"><small>Phone</small><b>+61 468 339 333</b></a><div><small>Location</small><b>Melbourne, Australia</b></div></div></div>
+<form class="contact-form card reveal" action="https://formsubmit.co/dylan.nguyen@ikaienergy.com.au" method="POST">
+<input type="hidden" name="_subject" value="New enquiry from IKAI Energy website"/><input type="hidden" name="_template" value="table"/><input type="hidden" name="_captcha" value="false"/><input type="hidden" name="_next" value="https://ikaienergy.com.au/contact?sent=true"/>
+<label>Name<input name="name" required autocomplete="name"/></label><label>Email<input type="email" name="email" required autocomplete="email"/></label><label>Company<input name="company" autocomplete="organization"/></label><label>How can we help?<textarea name="message" rows="6" required></textarea></label><button class="btn btn-primary" type="submit">Send enquiry ↗</button><p class="form-note">By submitting this form, you agree that IKAI may contact you regarding your enquiry.</p>
+</form></div></section>
+</BaseLayout>
+<style>.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:start}.contact-details h2{margin:20px 0}.contact-list{margin-top:45px}.contact-list a,.contact-list>div{display:block;padding:20px 0;border-top:1px solid var(--line)}.contact-list small{display:block;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:750}.contact-list b{display:block;margin-top:5px}.contact-form{padding:38px}.contact-form label{display:block;font-weight:750;margin-bottom:22px}.contact-form input,.contact-form textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:8px;background:#fbfcfd}.contact-form input:focus,.contact-form textarea:focus{outline:2px solid rgba(11,99,206,.25);border-color:var(--blue)}.form-note{font-size:.78rem;color:var(--muted);margin-top:16px}@media(max-width:800px){.contact-grid{grid-template-columns:1fr;gap:45px}.contact-form{padding:25px}}</style>

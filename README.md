@@ -1,28 +1,20 @@
-# IKAI Energy Consulting Website
+# IKAI Energy Consulting Website V2
 
-## Install
+Astro website for IKAI Energy Consulting.
+
+## Local development
+
 ```bash
 npm install
-```
-
-## Run locally
-```bash
 npm run dev
 ```
 
-## Build
+## Production build
+
 ```bash
 npm run build
 ```
 
-## Deploy
-Push to the GitHub `main` branch. Cloudflare Pages will build using:
+## Deployment
 
-- Build command: `npm run build`
-- Output directory: `dist`
-
-## Contact form
-The contact form uses FormSubmit. The first submission may send an activation email to:
-`dylan.nguyen@ikaienergy.com.au`
-
-Open that email and confirm once to activate the form.
+Push to the connected GitHub `main` branch. Cloudflare Pages will build and deploy automatically.

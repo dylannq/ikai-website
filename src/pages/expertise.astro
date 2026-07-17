@@ -1,27 +1,11 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-const areas = [
- ['Wind Energy','Grid integration, plant performance, controls and connection support for utility-scale wind projects.'],
- ['Solar Energy','Connection and electrical engineering support for utility-scale solar generation.'],
- ['Battery Energy Storage','RMS and EMT performance, control interactions, grid-forming considerations and connection strategy.'],
- ['Hybrid Projects','Integrated assessment of generation, storage, controls and shared network infrastructure.'],
- ['Transmission & Substations','Network interface, substation, transmission and balance-of-plant engineering.'],
- ['Large Loads','Connection strategy and power system assessment for data centres, industry and other major loads.'],
- ['Power Systems','Load flow, stability, fault level, dynamic performance and power quality analysis.'],
- ['Technical Leadership','Engineering management, stakeholder coordination and independent technical assurance.']
-];
+import BaseLayout from '../layouts/BaseLayout.astro';
+const sectors=[['Wind energy','Grid integration, plant performance, controls and delivery support for utility-scale wind projects.'],['Solar energy','Inverter-based generation modelling, connection studies and electrical engineering.'],['Battery storage','BESS and hybrid plant integration, controls, system strength and commissioning.'],['Transmission & substations','Network interfaces, high-voltage systems, transmission connections and REZ infrastructure.'],['Hybrid generation','Coordinated modelling and engineering across wind, solar, storage and shared connection assets.'],['Emerging technologies','Technical advisory for evolving grid-forming, hydrogen and next-generation energy solutions.']];
 ---
-<MainLayout title="Expertise | IKAI Energy Consulting" description="IKAI expertise across wind, solar, BESS, hybrid projects, transmission, substations and power systems.">
-  <section class="page-hero"><div class="container"><span class="eyebrow light">Expertise</span><h1>Deep capability across the energy system.</h1><p class="lead">Specialist technical knowledge supported by practical development, connection and delivery experience.</p></div></section>
-  <section class="section">
-    <div class="container grid grid-2">
-      {areas.map(([title,text], i) => (
-        <article class="card expertise-card"><div class="icon-tile">{String(i+1).padStart(2,'0')}</div><h3>{title}</h3><p class="muted">{text}</p></article>
-      ))}
-    </div>
-  </section>
-  <section class="section-sm"><div class="container"><div class="toolbox"><span class="eyebrow light">Tools & Methods</span><h2>PSS®E · PSCAD · PowerFactory · RMS · EMT · GPS · Harmonics · Protection</h2></div></div></section>
-</MainLayout>
-<style>
-.expertise-card{min-height:250px}.toolbox{background:#06203f;color:white;border-radius:26px;padding:52px}.toolbox h2{margin:22px 0 0;color:#fff;line-height:1.35}
-</style>
+<BaseLayout title="Expertise | IKAI Energy Consulting" description="IKAI expertise across wind, solar, battery storage, transmission, substations and hybrid generation.">
+<section class="page-hero"><div class="container"><span class="eyebrow gold">Sector expertise</span><h1>Experience across generation, storage and networks.</h1><p class="lead">Technical capability built around the assets, interfaces and operating challenges shaping Australia's power system.</p></div></section>
+<section class="section"><div class="container expertise-grid">{sectors.map(([t,d],i)=><article class:list={['expertise-card','reveal',`e${i+1}`]}><span>0{i+1}</span><div><h2>{t}</h2><p>{d}</p></div><b>↗</b></article>)}</div></section>
+<section class="section section-soft"><div class="container grid-2 approach"><div><span class="eyebrow">Our perspective</span><h2>Technology is only one part of the system.</h2></div><div><p class="lead">Successful energy projects depend on how generation technology, network conditions, controls, approvals, design and commercial decisions work together.</p><p>IKAI brings an integrated view to these interfaces—helping teams identify issues earlier and make decisions with greater confidence.</p></div></div></section>
+<section class="cta"><div class="container"><h2>Bring specialist power system insight into your project team.</h2><a href="/contact" class="btn btn-primary">Contact IKAI ↗</a></div></section>
+</BaseLayout>
+<style>.expertise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}.expertise-card{min-height:330px;border-radius:var(--radius);padding:35px;background:var(--navy-900);color:#fff;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.expertise-card::after{content:'';position:absolute;width:260px;height:260px;border:1px solid rgba(255,255,255,.18);border-radius:50%;right:-80px;top:-80px;box-shadow:0 0 0 50px rgba(255,255,255,.025)}.expertise-card span{color:var(--gold);font-weight:850}.expertise-card h2{color:#fff;font-size:2.25rem;margin-bottom:12px}.expertise-card p{color:#c6d4e1;max-width:500px}.expertise-card b{position:absolute;right:35px;bottom:35px}.e2{background:#0b63ce}.e3{background:#3e792d}.e4{background:#7a5305}.e5{background:#103f69}.e6{background:#254f5b}.approach{align-items:start}.approach p+p{margin-top:22px;color:var(--muted)}.cta{background:var(--navy-900);padding:80px 0}.cta .container{display:flex;align-items:center;justify-content:space-between;gap:40px}.cta h2{color:#fff;max-width:760px}@media(max-width:720px){.expertise-grid{grid-template-columns:1fr}.cta .container{align-items:flex-start;flex-direction:column}}</style>

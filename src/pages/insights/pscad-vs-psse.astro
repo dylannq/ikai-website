@@ -1,11 +1,10 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
 ---
-<MainLayout title="PSCAD and PSS®E: when each model matters | IKAI Insights" description="PSCAD and PSS®E: when each model matters">
-  <section class="page-hero"><div class="container"><span class="eyebrow light">IKAI Insight</span><h1>PSCAD and PSS®E: when each model matters</h1><p class="lead">Practical perspectives from IKAI Energy Consulting.</p></div></section>
-  <section class="section"><article class="container prose">
-    <p>PSS®E and PSCAD are both important power system tools, but they answer different types of questions.</p><h2>PSS®E for broad system behaviour</h2><p>PSS®E is commonly used for load flow, fault level, dynamic stability and large-scale network assessment. RMS simulation is efficient for examining system behaviour over wider areas and longer timeframes.</p><h2>PSCAD for fast electromagnetic behaviour</h2><p>PSCAD represents electromagnetic transients in much greater detail. It is particularly valuable for inverter controls, weak-grid behaviour, fast interactions and detailed fault response.</p><h2>One does not replace the other</h2><p>A project may perform well in RMS studies while still showing issues in EMT simulation. Equally, detailed EMT analysis does not remove the need to understand wider system behaviour.</p><p>The right approach is to define the engineering question first, then select the model and study method that can answer it credibly.</p>
-    <hr/>
-    <p><strong>Need support with your project?</strong> <a href="/contact">Contact IKAI Energy Consulting.</a></p>
-  </article></section>
-</MainLayout>
+<ArticleLayout title="PSCAD versus PSS®E: selecting the right study tool" category="Power systems" readTime="6 min read" description="A practical comparison of PSCAD and PSS/E for renewable energy grid connection studies.">
+<p class="lead">PSS®E and PSCAD are complementary tools. The right choice depends on the physical phenomenon, time scale, model fidelity and decision the study needs to support.</p>
+<h2>Where PSS®E is strongest</h2><p>RMS simulation is efficient for broad network assessment, longer-duration dynamic behaviour and large sets of credible contingencies. It remains central to many connection and planning studies.</p>
+<h2>Where PSCAD is strongest</h2><p>EMT simulation captures fast control interactions, switching behaviour and detailed converter dynamics. It is especially important in weak-grid conditions and where inverter-based resources dominate.</p>
+<h2>Avoid tool-led analysis</h2><p>The study question should determine the tool—not the other way around. Define the risk, required fidelity and acceptance criteria before building the study scope.</p>
+<h2>Use results together</h2><p>Differences between RMS and EMT results can provide useful insight. A coordinated approach helps teams understand where simplified representations remain valid and where detailed controls drive system behaviour.</p>
+</ArticleLayout>

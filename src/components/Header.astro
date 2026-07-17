@@ -1,74 +1,34 @@
 ---
-const pathname = Astro.url.pathname;
+const path = Astro.url.pathname;
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/expertise', label: 'Expertise' },
-  { href: '/insights', label: 'Insights' },
-  { href: '/contact', label: 'Contact' }
+  ['About','/about'],['Services','/services'],['Expertise','/expertise'],['Insights','/insights'],['Contact','/contact']
 ];
 ---
-<header class="site-header">
+<header class="site-header" data-header>
   <div class="container nav-wrap">
-    <a class="brand" href="/" aria-label="IKAI Energy Consulting home">
-      <img src="/images/ikai-logo-horizontal.png" alt="IKAI Energy Consulting" />
+    <a href="/" class="brand" aria-label="IKAI Energy Consulting home">
+      <img class="brand-light" src="/images/ikai-logo-white.png" alt="IKAI Energy Consulting" />
+      <img class="brand-dark" src="/images/ikai-logo-navy.png" alt="IKAI Energy Consulting" />
     </a>
-
-    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav id="main-nav" class="nav">
-      {links.map((link) => (
-        <a class:list={['nav-link', { active: pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href)) }]} href={link.href}>
-          {link.label}
-        </a>
-      ))}
-      <a class="nav-cta" href="/contact">Book a Consultation</a>
+    <button class="menu-button" data-menu aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav" data-nav aria-label="Main navigation">
+      {links.map(([label,href]) => <a class:list={{active:path===href || (href!=='/'&&path.startsWith(href+'/'))}} href={href}>{label}</a>)}
+      <a href="/contact" class="nav-cta">Talk to us <span>↗</span></a>
     </nav>
   </div>
 </header>
-
-<script>
-  const toggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('#main-nav');
-  toggle?.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    nav?.classList.toggle('open');
-  });
-</script>
-
 <style>
-.site-header {
-  position: fixed; inset: 0 0 auto;
-  z-index: 50;
-  background: rgba(255,255,255,.94);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(219,227,234,.9);
-}
-.nav-wrap { min-height: 82px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-.brand img { width: 250px; height: 72px; object-fit: contain; object-position: left center; }
-.nav { display:flex; align-items:center; gap:23px; }
-.nav-link { font-weight:700; font-size:.94rem; color:#34475c; position:relative; padding:28px 0; }
-.nav-link::after { content:""; position:absolute; left:0; right:100%; bottom:19px; height:2px; background:#d69a00; transition:.2s; }
-.nav-link:hover::after, .nav-link.active::after { right:0; }
-.nav-link.active { color:#06203f; }
-.nav-cta { background:#06203f; color:white; border-radius:999px; padding:12px 18px; font-weight:800; }
-.menu-toggle { display:none; border:0; background:none; padding:10px; }
-.menu-toggle span { display:block; width:25px; height:2px; background:#06203f; margin:5px; }
-@media (max-width: 980px) {
-  .menu-toggle { display:block; }
-  .nav {
-    display:none; position:absolute; top:82px; left:0; right:0;
-    background:white; padding:20px; border-bottom:1px solid #dbe3ea;
-    flex-direction:column; align-items:stretch; gap:0;
-  }
-  .nav.open { display:flex; }
-  .nav-link { padding:13px 8px; }
-  .nav-link::after { display:none; }
-  .nav-cta { margin-top:10px; text-align:center; }
-  .brand img { width: 215px; }
-}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;height:86px;transition:.3s ease;color:#fff}.site-header.scrolled,.site-header.light{background:rgba(255,255,255,.96);box-shadow:0 8px 30px rgba(3,19,38,.08);backdrop-filter:blur(18px);color:var(--navy-900)}
+.nav-wrap{height:100%;display:flex;align-items:center;justify-content:space-between}.brand{width:210px;display:block}.brand img{width:100%;height:58px;object-fit:contain;object-position:left center}.brand-dark{display:none}.scrolled .brand-light,.light .brand-light{display:none}.scrolled .brand-dark,.light .brand-dark{display:block}
+.nav{display:flex;align-items:center;gap:28px;font-size:.92rem;font-weight:650}.nav>a:not(.nav-cta){position:relative}.nav>a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:100%;bottom:-9px;height:2px;background:var(--gold);transition:.2s}.nav>a:hover::after,.nav>a.active::after{right:0}.nav-cta{padding:11px 18px;border:1px solid rgba(255,255,255,.45);border-radius:999px}.scrolled .nav-cta,.light .nav-cta{background:var(--navy-900);color:#fff;border-color:var(--navy-900)}
+.menu-button{display:none;border:0;background:none;padding:8px}.menu-button span{display:block;width:26px;height:2px;background:currentColor;margin:5px}
+@media(max-width:860px){.site-header{height:76px}.brand{width:170px}.menu-button{display:block;color:inherit}.nav{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;color:var(--navy-900);padding:22px 24px 28px;flex-direction:column;align-items:stretch;gap:18px;box-shadow:0 20px 30px rgba(3,19,38,.1)}.nav.open{display:flex}.nav-cta{text-align:center;background:var(--navy-900);color:#fff!important}.site-header:not(.scrolled):not(.light) .nav{background:var(--navy-950);color:#fff}}
 </style>
+<script>
+  const header=document.querySelector('[data-header]');
+  const menu=document.querySelector('[data-menu]');
+  const nav=document.querySelector('[data-nav]');
+  const onScroll=()=>header?.classList.toggle('scrolled',window.scrollY>20);
+  onScroll(); addEventListener('scroll',onScroll,{passive:true});
+  menu?.addEventListener('click',()=>{const open=nav?.classList.toggle('open');menu.setAttribute('aria-expanded',String(!!open));});
+</script>

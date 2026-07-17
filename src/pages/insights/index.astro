@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const posts=[
+['Grid connection','Understanding the Generator Performance Standards process in Australia','A practical overview of the process, interfaces and decisions that shape a successful GPS pathway.','/insights/understanding-gps-process','7 min read'],
+['Project strategy','Five grid connection risks to address early','The connection risks that can quickly become programme, cost and investment risks if left unresolved.','/insights/grid-connection-risks','5 min read'],
+['Power systems','PSCAD versus PSS®E','How to select the right modelling environment based on the technical question, project stage and risk.','/insights/pscad-vs-psse','6 min read']
+];
+---
+<BaseLayout title="Insights | IKAI Energy Consulting" description="Technical insights on grid connection, power systems and renewable energy engineering.">
+<section class="page-hero"><div class="container"><span class="eyebrow gold">Insights</span><h1>Technical thinking for better project decisions.</h1><p class="lead">Practical perspectives on grid connection, power systems and the delivery of renewable energy infrastructure.</p></div></section>
+<section class="section"><div class="container posts">{posts.map(([cat,title,desc,url,time],i)=><a href={url} class="post reveal"><div class:list={['post-art',`p${i+1}`]}><span>{String(i+1).padStart(2,'0')}</span></div><div class="post-body"><span>{cat} · {time}</span><h2>{title}</h2><p>{desc}</p><b>Read article <i>→</i></b></div></a>)}</div></section>
+</BaseLayout>
+<style>.posts{display:grid;gap:28px}.post{display:grid;grid-template-columns:.75fr 1.25fr;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:.25s}.post:hover{transform:translateY(-5px);box-shadow:var(--shadow)}.post-art{min-height:330px;background:var(--navy-900);position:relative;overflow:hidden;padding:30px}.post-art::before{content:'';position:absolute;width:260px;height:260px;border:2px solid rgba(255,255,255,.35);border-radius:50%;right:-60px;top:-60px;box-shadow:0 0 0 48px rgba(255,255,255,.05)}.post-art span{color:var(--gold);font-weight:850}.p2{background:#0b63ce}.p3{background:#467f2f}.post-body{padding:42px}.post-body>span{text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;font-weight:800;color:var(--blue)}.post-body h2{font-size:2rem;margin:18px 0}.post-body p{color:var(--muted);max-width:620px}.post-body b{display:block;margin-top:35px}.post-body i{font-style:normal}@media(max-width:700px){.post{grid-template-columns:1fr}.post-art{min-height:190px}.post-body{padding:28px}}</style>

@@ -1,37 +1,16 @@
 <footer class="footer">
   <div class="container footer-grid">
     <div>
-      <img class="footer-logo" src="/images/ikai-logo-dark.png" alt="IKAI Energy Consulting" />
-      <p class="footer-copy">Independent power systems, grid connection and engineering advisory supporting Australia's energy transition.</p>
+      <img src="/images/ikai-logo-white.png" alt="IKAI Energy Consulting" class="footer-logo" />
+      <p class="footer-intro">Independent engineering advice for complex power system and grid connection challenges.</p>
     </div>
-    <div>
-      <h3>Explore</h3>
-      <a href="/about">About</a>
-      <a href="/services">Services</a>
-      <a href="/expertise">Expertise</a>
-      <a href="/insights">Insights</a>
-    </div>
-    <div>
-      <h3>Contact</h3>
-      <a href="mailto:dylan.nguyen@ikaienergy.com.au">dylan.nguyen@ikaienergy.com.au</a>
-      <a href="tel:+61468339333">+61 468 339 333</a>
-      <p>Melbourne, Australia</p>
-    </div>
+    <div><h3>Company</h3><a href="/about">About</a><a href="/expertise">Expertise</a><a href="/insights">Insights</a></div>
+    <div><h3>Services</h3><a href="/services#grid">Grid connection</a><a href="/services#studies">Power system studies</a><a href="/services#design">Engineering design</a><a href="/services#owners-engineer">Owner's engineer</a></div>
+    <div><h3>Contact</h3><a href="mailto:dylan.nguyen@ikaienergy.com.au">dylan.nguyen@ikaienergy.com.au</a><a href="tel:+61468339333">+61 468 339 333</a><span>Melbourne, Australia</span></div>
   </div>
-  <div class="container footer-bottom">
-    <span>© {new Date().getFullYear()} IKAI Pty Ltd. All rights reserved.</span>
-    <span>Smart Energy. Sustainable Future.</span>
-  </div>
+  <div class="container footer-bottom"><span>© {new Date().getFullYear()} IKAI Pty Ltd. All rights reserved.</span><span>Smart Energy. Sustainable Future.</span></div>
 </footer>
-
 <style>
-.footer { background:#03152d; color:white; padding:72px 0 24px; }
-.footer-grid { display:grid; grid-template-columns:1.7fr .8fr 1fr; gap:60px; }
-.footer-logo { width:420px; max-width:100%; margin-bottom:22px; }
-.footer-copy { color:rgba(255,255,255,.68); max-width:540px; }
-.footer h3 { color:#efb31c; font-size:1rem; text-transform:uppercase; letter-spacing:.1em; }
-.footer a, .footer p { display:block; color:rgba(255,255,255,.72); margin:10px 0; overflow-wrap:anywhere; }
-.footer a:hover { color:white; }
-.footer-bottom { border-top:1px solid rgba(255,255,255,.14); margin-top:44px; padding-top:22px; display:flex; justify-content:space-between; gap:20px; color:rgba(255,255,255,.48); font-size:.88rem; }
-@media(max-width:800px){ .footer-grid{grid-template-columns:1fr;gap:30px}.footer-bottom{flex-direction:column}.footer-logo{width:360px} }
+.footer{background:var(--navy-950);color:#c9d5e1;padding:75px 0 30px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1.3fr 1.5fr;gap:44px}.footer-logo{width:240px;height:82px;object-fit:contain;object-position:left}.footer-intro{max-width:370px;color:#9fb0c1;margin-top:18px}.footer h3{color:#fff;font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;margin:18px 0}.footer a,.footer span{display:block;margin:.7rem 0;color:#b9c7d4}.footer a:hover{color:var(--gold)}.footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:55px;padding-top:25px;display:flex;justify-content:space-between;font-size:.84rem;color:#8194a8}.footer-bottom span{margin:0}
+@media(max-width:900px){.footer-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.footer-grid{grid-template-columns:1fr}.footer-bottom{display:block}.footer-bottom span+span{margin-top:8px}}
 </style>

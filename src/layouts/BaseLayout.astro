@@ -1,0 +1,21 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+const { title='IKAI Energy Consulting', description='Independent power systems, grid connection and renewable energy consulting in Australia.', image='/images/ikai-logo-navy.png', lightHeader=false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width"/>
+<title>{title}</title><meta name="description" content={description}/><link rel="canonical" href={canonical}/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<meta property="og:type" content="website"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:image" content={new URL(image,Astro.site)}/>
+<meta name="twitter:card" content="summary_large_image"/><meta name="theme-color" content="#061a33"/>
+<script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"ProfessionalService","name":"IKAI Energy Consulting","url":"https://ikaienergy.com.au","email":"dylan.nguyen@ikaienergy.com.au","telephone":"+61 468 339 333","areaServed":"Australia","address":{"@type":"PostalAddress","addressLocality":"Melbourne","addressRegion":"VIC","addressCountry":"AU"}})} />
+</head><body>
+<Header/><main><slot/></main><Footer/>
+<script>
+const observer=new IntersectionObserver((entries)=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body></html>

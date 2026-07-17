@@ -1,30 +1,16 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-const services = [
-  { n:'01', title:'Grid Connection', text:'End-to-end technical support from connection strategy through commissioning and compliance.', items:['Connection strategy and risk reviews','Generator Performance Standards','R0, R1 and R2 study coordination','AEMO and NSP engagement','Model acceptance and technical queries'] },
-  { n:'02', title:'Power System Studies', text:'RMS and EMT studies to support connection, design and operational decisions.', items:['PSS®E, PSCAD and PowerFactory studies','Load flow, fault level and stability','EMT performance and control interactions','Harmonics and power quality','Model validation and benchmarking'] },
-  { n:'03', title:'Electrical Engineering', text:'Practical engineering design and technical assurance across project delivery.', items:['Electrical balance of plant','Primary and secondary systems','Substations and transmission interfaces','Design basis and specifications','Design review and technical assurance'] },
-  { n:'04', title:"Owner's Engineer", text:'Independent technical representation across development, procurement and construction.', items:['Technical due diligence','Design and tender review','Contractor technical management','Construction support','Commissioning and handover support'] },
-  { n:'05', title:'Strategy & Advisory', text:'Technical and commercial insight for investment and project decisions.', items:['Project risk assessment','Connection pathway options','Technology and concept evaluation','Technical-commercial interface support','Executive and board-level advice'] },
-  { n:'06', title:'Operational Asset Support', text:'Support for compliance, performance and technical risk across operating assets.', items:['Compliance monitoring','Performance issue investigation','Technical risk reviews','Change management support','AEMO and NSP interface'] }
+import BaseLayout from '../layouts/BaseLayout.astro';
+const detail=[
+{n:'01',id:'grid',title:'Grid Connection',intro:'Strategic and technical support through the Australian connection process.',items:['Connection strategy and risk review','Generator Performance Standards','AEMO and NSP engagement','R1/R2 model and study coordination','Registration and commissioning support']},
+{n:'02',id:'studies',title:'Power System Studies',intro:'RMS and EMT studies that answer the right technical and project questions.',items:['PSS®E, PSCAD and PowerFactory studies','Steady-state, fault level and dynamic studies','System strength and stability assessment','Control interaction and tuning support','Model validation and compliance assessment']},
+{n:'03',id:'design',title:'Engineering Design',intro:'Integrated electrical engineering for renewable generation and network infrastructure.',items:['Electrical balance-of-plant design','Primary and secondary systems','Substation and transmission interfaces','Technical specifications and design reviews','Constructability and value engineering']},
+{n:'04',id:'owners-engineer',title:"Owner's Engineer",intro:'Independent technical leadership across development, procurement and delivery.',items:['Technical due diligence','Tender and contractor evaluation','Design assurance and interface management','Construction and commissioning support','Technical risk and governance']}
 ];
 ---
-<MainLayout title="Services | IKAI Energy Consulting" description="Grid connection, power system studies, electrical engineering, owner's engineer and technical advisory services.">
-  <section class="page-hero"><div class="container"><span class="eyebrow light">Services</span><h1>Technical expertise across the project lifecycle.</h1><p class="lead">From early strategy to connection, design, delivery and operations.</p></div></section>
-  <section class="section">
-    <div class="container service-list">
-      {services.map((s) => (
-        <article class="service-row">
-          <div class="service-index">{s.n}</div>
-          <div><h2>{s.title}</h2><p class="lead">{s.text}</p></div>
-          <ul class="list-clean">{s.items.map(i => <li>{i}</li>)}</ul>
-        </article>
-      ))}
-    </div>
-  </section>
-  <section class="section-sm"><div class="container cta-band"><div><span class="eyebrow light">Need a tailored scope?</span><h2>Let’s define the right technical support for your project.</h2></div><a class="btn btn-primary" href="/contact">Book a Consultation</a></div></section>
-</MainLayout>
-<style>
-.service-row{display:grid;grid-template-columns:70px 1fr 1fr;gap:40px;padding:54px 0;border-bottom:1px solid var(--line)}.service-index{color:var(--gold-500);font-weight:900;letter-spacing:.15em}.service-row h2{font-size:2rem}.service-row .lead{font-size:1.06rem}
-@media(max-width:800px){.service-row{grid-template-columns:1fr;gap:12px;padding:38px 0}}
-</style>
+<BaseLayout title="Services | IKAI Energy Consulting" description="Grid connection, power system studies, engineering design and owner's engineer services for energy projects.">
+<section class="page-hero"><div class="container"><span class="eyebrow gold">Our services</span><h1>Engineering support across the project lifecycle.</h1><p class="lead">From early grid strategy to commissioning, IKAI provides focused technical capability and accountable engineering leadership.</p></div></section>
+<section class="section"><div class="container service-list">{detail.map((s,i)=><article id={s.id} class="service-detail reveal"><div class="service-title"><span>{s.n}</span><h2>{s.title}</h2></div><div><p class="lead">{s.intro}</p><ul>{s.items.map(item=><li>{item}</li>)}</ul><a href="/contact" class="text-link">Discuss your project <span class="arrow">↗</span></a></div></article>)}</div></section>
+<section class="engagement section section-soft"><div class="container"><div class="section-head"><div><span class="eyebrow">Engagement models</span><h2>Flexible support, matched to your project.</h2></div></div><div class="grid-3"><article class="card"><h3>Targeted advisory</h3><p>Independent review or specialist input for a defined issue, decision or workstream.</p></article><article class="card"><h3>Embedded project support</h3><p>Additional technical capacity integrated with your project or engineering team.</p></article><article class="card"><h3>Technical leadership</h3><p>End-to-end ownership of grid connection, studies or engineering management scope.</p></article></div></div></section>
+<section class="cta"><div class="container"><h2>Let’s solve the technical challenge behind your project.</h2><a class="btn btn-primary" href="/contact">Talk to IKAI ↗</a></div></section>
+</BaseLayout>
+<style>.service-list{border-top:1px solid var(--line)}.service-detail{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;padding:75px 0;border-bottom:1px solid var(--line)}.service-title span{font-weight:850;color:var(--gold)}.service-title h2{font-size:clamp(2.2rem,4vw,3.6rem);margin-top:18px}.service-detail ul{list-style:none;padding:0;margin:35px 0}.service-detail li{padding:13px 0 13px 25px;border-bottom:1px solid var(--line);position:relative;color:#405267}.service-detail li::before{content:'↗';position:absolute;left:0;color:var(--blue)}.engagement article{padding:35px}.engagement article h3{margin-bottom:14px}.engagement article p{color:var(--muted)}.cta{background:var(--navy-900);color:#fff;padding:80px 0}.cta .container{display:flex;align-items:center;justify-content:space-between;gap:40px}.cta h2{color:#fff;max-width:800px}@media(max-width:750px){.service-detail{grid-template-columns:1fr;gap:25px;padding:55px 0}.cta .container{align-items:flex-start;flex-direction:column}}</style>
