@@ -1,6 +1,6 @@
-# IKAI Energy Consulting Website V2
+# IKAI Energy Consulting Website V3
 
-Astro website for IKAI Energy Consulting.
+Production-ready Astro website for IKAI Energy Consulting.
 
 ## Local development
 
@@ -18,3 +18,7 @@ npm run build
 ## Deployment
 
 Push to the connected GitHub `main` branch. Cloudflare Pages will build and deploy automatically.
+
+- Build command: `npm run build`
+- Output directory: `dist`
+- Node version: 20 or later

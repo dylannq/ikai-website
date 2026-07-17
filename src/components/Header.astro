@@ -12,15 +12,16 @@ const links = [
     </a>
     <button class="menu-button" data-menu aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav" data-nav aria-label="Main navigation">
-      {links.map(([label,href]) => <a class:list={{active:path===href || (href!=='/'&&path.startsWith(href+'/'))}} href={href}>{label}</a>)}
+      {links.slice(0,-1).map(([label,href]) => <a class:list={{active:path===href || (href!=='/'&&path.startsWith(href+'/'))}} href={href}>{label}</a>)}
+      <a class="nav-cta" href="/contact">Start a conversation <span>↗</span></a>
     </nav>
   </div>
 </header>
 <style>
 .site-header{position:fixed;top:0;left:0;right:0;z-index:50;height:86px;transition:.3s ease;color:#fff}.site-header.scrolled,.site-header.light{background:rgba(255,255,255,.96);box-shadow:0 8px 30px rgba(3,19,38,.08);backdrop-filter:blur(18px);color:var(--navy-900)}
 .nav-wrap{height:100%;display:flex;align-items:center;justify-content:space-between}.brand{width:210px;display:block}.brand img{width:100%;height:58px;object-fit:contain;object-position:left center}.brand-dark{display:none}.scrolled .brand-light,.light .brand-light{display:none}.scrolled .brand-dark,.light .brand-dark{display:block}
-.nav{display:flex;align-items:center;gap:28px;font-size:.92rem;font-weight:650}.nav>a{position:relative}.nav>a::after{content:"";position:absolute;left:0;right:100%;bottom:-9px;height:2px;background:var(--gold);transition:.2s}.nav>a:hover::after,.nav>a.active::after{right:0}.menu-button{display:none;border:0;background:none;padding:8px}.menu-button span{display:block;width:26px;height:2px;background:currentColor;margin:5px}
-@media(max-width:860px){.site-header{height:76px}.brand{width:170px}.menu-button{display:block;color:inherit}.nav{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;color:var(--navy-900);padding:22px 24px 28px;flex-direction:column;align-items:stretch;gap:18px;box-shadow:0 20px 30px rgba(3,19,38,.1)}.nav.open{display:flex}.site-header:not(.scrolled):not(.light) .nav{background:var(--navy-950);color:#fff}}
+.nav{display:flex;align-items:center;gap:26px;font-size:.92rem;font-weight:650}.nav>a{position:relative}.nav>a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:100%;bottom:-9px;height:2px;background:var(--gold);transition:.2s}.nav>a:not(.nav-cta):hover::after,.nav>a.active:not(.nav-cta)::after{right:0}.nav-cta{display:inline-flex;align-items:center;gap:.55rem;padding:.72rem 1.05rem;border-radius:999px;background:var(--gold);color:var(--navy-950);font-weight:800;transition:.2s}.nav-cta:hover{transform:translateY(-2px);background:var(--gold-soft)}.nav-cta span{font-size:1.05rem}.menu-button{display:none;border:0;background:none;padding:8px}.menu-button span{display:block;width:26px;height:2px;background:currentColor;margin:5px}
+@media(max-width:860px){.site-header{height:76px}.brand{width:170px}.menu-button{display:block;color:inherit}.nav{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;color:var(--navy-900);padding:22px 24px 28px;flex-direction:column;align-items:stretch;gap:18px;box-shadow:0 20px 30px rgba(3,19,38,.1)}.nav.open{display:flex}.nav-cta{justify-content:center;margin-top:4px}.site-header:not(.scrolled):not(.light) .nav{background:var(--navy-950);color:#fff}}
 </style>
 <script>
   const header=document.querySelector('[data-header]');
