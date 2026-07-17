@@ -8,20 +8,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <div class="form-column reveal">
 <div id="success-message" class="success-message" role="status" tabindex="-1" hidden>
 <div class="success-icon" aria-hidden="true">✓</div>
-<div><strong>Your enquiry has been sent successfully.</strong><p>Thank you for contacting IKAI. We will get back to you shortly.</p></div>
+<div><strong>Your enquiry has been sent successfully.</strong><p>Thank you for contacting IKAI. IKAI will get back to you shortly.</p></div>
 </div>
 <form id="contact-form" class="contact-form card" action="https://formsubmit.co/contact@ikaienergy.com.au" method="POST" novalidate>
 <input type="hidden" name="_subject" value="New enquiry from IKAI Energy website"/>
 <input type="hidden" name="_template" value="table"/>
 <input type="hidden" name="_next" value="https://ikaienergy.com.au/contact?sent=1"/>
-<input type="hidden" name="_autoresponse" value="Thank you for contacting IKAI.%0D%0A%0D%0AIKAI has successfully received your enquiry. A member of the IKAI team will review your enquiry and respond as soon as possible.%0D%0A%0D%0AIf your enquiry is urgent, please contact IKAI directly using the contact details on the website.%0D%0A%0D%0AKind regards,%0D%0A%0D%0AIKAI%0D%0ASmart Energy. Sustainable Future."/>
-<input type="hidden" name="_captcha" value="true"/>
+<input type="hidden" name="_autoresponse" value="Thank you for contacting IKAI.&#10;&#10;IKAI has successfully received your enquiry. A member of the IKAI team will review your enquiry and respond as soon as possible.&#10;&#10;If your enquiry is urgent, please contact IKAI directly using the contact details on the website.&#10;&#10;Kind regards,&#10;&#10;IKAI&#10;Smart Energy. Sustainable Future."/>
+<input type="hidden" name="_captcha" value="false"/>
 <label>Full name<input name="name" required autocomplete="name" placeholder="Your name"/></label>
 <label>Email address<input type="email" name="email" autocomplete="email" placeholder="you@example.com"/></label>
 <label>Contact phone number<input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="e.g. +61 4xx xxx xxx"/></label>
-<p id="contact-error" class="contact-error" role="alert" hidden>Please leave your email address or phone number so we can get back to you.</p>
+<p id="contact-error" class="contact-error" role="alert" hidden>Please leave your email address or phone number so IKAI can get back to you.</p>
 <label>Company<input name="company" autocomplete="organization" placeholder="Company or organisation"/></label>
-<label>How can we help?<textarea name="message" rows="6" placeholder="Tell us briefly about your project or enquiry"></textarea></label>
+<label>How can IKAI help?<textarea name="message" rows="6" placeholder="Tell us briefly about your project or enquiry"></textarea></label>
 <button class="btn btn-primary" type="submit">Send</button>
 </form>
 </div></div></div></section>
